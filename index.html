@@ -7,17 +7,17 @@
     <title>手册</title>
     <style type="text/css">
         #outer{
-            width:593px;
-            height:500px;
-            padding:10px;
-            padding-bottom:100px;
-            margin:0 auto;
+            margin:auto;
             background-color:#ffffff;
             text-align:center;
         }
         img{
-            width:593px;
-            height:500px;
+            display:table-cell;
+            margin:auto;
+            transform: scale(0.5);
+        }
+        #txt{
+            text-align:center;
         }
 
     </style>
@@ -28,8 +28,8 @@
              * 切换图片就是利用js修改img标签中的src属性
             */
             // 获取按钮对象
-            var last = document.getElementById("last");
-            var next = document.getElementById("next");
+            // var last = document.getElementById("last");
+            // var next = document.getElementById("next");
             // 获取img标签对象
             var img = document.getElementsByTagName("img")[0];
 
@@ -45,33 +45,39 @@
 
 
             // 分别为两个按钮绑定单击响应函数
-            next.onclick = function(){
-                // 切换图形就是修改img的src属性
-                // 要修改一个元素的属性： 元素.属性 = 属性值
-                // 单击一次索引自加一，切换到下一张图片
-                index++;
-                if(index>imgArr.length-1)index = 0;
-                info.innerHTML = "一共"+imgArr.length+"张图片"+"，当前第"+(index+1)+"张";
-                img.src = imgArr[index];
-            };
+            // next.onclick = function(){
+            //     // 切换图形就是修改img的src属性
+            //     // 要修改一个元素的属性： 元素.属性 = 属性值
+            //     // 单击一次索引自加一，切换到下一张图片
+            //     index++;
+            //     if(index>imgArr.length-1)index = 0;
+            //     info.innerHTML = "一共"+imgArr.length+"张图片"+"，当前第"+(index+1)+"张";
+            //     img.src = imgArr[index];
+            // };
 
-            last.onclick = function(){
-                 //alert("下一张");
-                index--;
-                if(index<0)index = imgArr.length-1;
-                info.innerHTML = "一共"+imgArr.length+"张图片"+"，当前第"+(index+1)+"张";
-                img.src = imgArr[index];
-            };
+            // last.onclick = function(){
+            //      //alert("下一张");
+            //     index--;
+            //     if(index<0)index = imgArr.length-1;
+            //     info.innerHTML = "一共"+imgArr.length+"张图片"+"，当前第"+(index+1)+"张";
+            //     img.src = imgArr[index];
+            // };
+            acclaim.onclick = function(){
+                info.innerHTML = "巨尴尬"
+                img.src = "./img/acclaim.gif"
+            }
         };
     </script>
 
 </head>
 <body>
+    <p id="txt">表情包合成，没有前缀，例</p>
     <div id="outer">
         <p id="info">一共六张图片，当前第张</p>
         <img src="./img/要我一直.png" alt=""/>
-        <button id="last">上一张</button>
-        <button id="next">下一张</button>
+        <!-- <button id="last">上一张</button>
+        <button id="next">下一张</button> -->
+        <button id="acclaim">acclaim</button>
     </div>
 </body>
 </html>
