@@ -1,33 +1,77 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>手册</title>
+    <title>js练习-图片切换练习</title>
+    <style type="text/css">
+        #outer{
+            width:593px;
+            height:500px;
+            padding:10px;
+            padding-bottom:100px;
+            margin:0 auto;
+            background-color:#ffffff;
+            text-align:center;
+        }
+        img{
+            width:593px;
+            height:500px;
+        }
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            /**
+             * 点击按钮切换图片,
+             * 切换图片就是利用js修改img标签中的src属性
+            */
+            // 获取按钮对象
+            var last = document.getElementById("last");
+            var next = document.getElementById("next");
+            // 获取img标签对象
+            var img = document.getElementsByTagName("img")[0];
+
+            // 创建一个数组来保存图片的路径
+            var imgArr = ["./img/要我一直.png",];
+            // 创建一个变量存储当前正在显示的图片的索引
+            var index = 0;
+            
+            // 获取id为info的p元素
+            var info = document.getElementById("info");
+            // 设置提示文字
+            info.innerHTML = "一共"+imgArr.length+"张图片"+"，当前第"+(index+1)+"张";
+
+
+            // 分别为两个按钮绑定单击响应函数
+            next.onclick = function(){
+                // 切换图形就是修改img的src属性
+                // 要修改一个元素的属性： 元素.属性 = 属性值
+                // 单击一次索引自加一，切换到下一张图片
+                index++;
+                if(index>imgArr.length-1)index = 0;
+                info.innerHTML = "一共"+imgArr.length+"张图片"+"，当前第"+(index+1)+"张";
+                img.src = imgArr[index];
+            };
+
+            last.onclick = function(){
+                 //alert("下一张");
+                index--;
+                if(index<0)index = imgArr.length-1;
+                info.innerHTML = "一共"+imgArr.length+"张图片"+"，当前第"+(index+1)+"张";
+                img.src = imgArr[index];
+            };
+        };
+    </script>
+
 </head>
-<script type="text/javascript" language="javascript">
-    function Toggle() {
-        if (div1.style.visibility == 'hidden') {
-            div1.style.visibility = 'visible';
-            f1.style.height = div1.offsetHeight + 'px';
-            bt1.value = "隐藏";
-        }
-        else {
-
-            div1.style.visibility = 'hidden';
-            f1.style.height = '10px';
-            bt1.value = '展开';
-        }
-    }
-</script>
-
 <body>
-    <input id="bt1" type="button" onclick="Toggle()" value="隐藏" />
-    <fieldset id="f1">
-        <div id="div1" style="visibility:visible">
-            这是第一部分的内容
-        </div>
+    <div id="outer">
+        <p id="info">一共六张图片，当前第张</p>
+        <img src="./img/要我一直.png" alt=""/>
+        <button id="last">上一张</button>
+        <button id="next">下一张</button>
+    </div>
 </body>
-
 </html>
