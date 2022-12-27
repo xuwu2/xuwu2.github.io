@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手册</title>
+</head>
+<script type="text/javascript" language="javascript">
+    function Toggle() {
+        if (div1.style.visibility == 'hidden') {
+            div1.style.visibility = 'visible';
+            f1.style.height = div1.offsetHeight + 'px';
+            bt1.value = "隐藏";
+        }
+        else {
+
+            div1.style.visibility = 'hidden';
+            f1.style.height = '10px';
+            bt1.value = '展开';
+        }
+    }
+</script>
+
+<body>
+    <input id="bt1" type="button" onclick="Toggle()" value="隐藏" />
+    <fieldset id="f1">
+        <div id="div1" style="visibility:visible">
+            这是第一部分的内容
+        </div>
+</body>
+
+</html>
